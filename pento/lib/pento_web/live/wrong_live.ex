@@ -1,8 +1,10 @@
 defmodule PentoWeb.WrongLive do
   use PentoWeb, :live_view
 
-  def mount(_params, _session, socket) do
-    {:ok, assign(socket, score: 0, message: "Make a guess:", time: time(), answer: 1..9|>Enum.random())}
+  def mount(_params, session, socket) do
+    # this code will replaced by on_mount later on in this chapter!
+    {:ok, assign(socket, score: 0, message: "Make a guess:", time: time(), answer: 1..10|>Enum.random(),
+      session_id: session["live_socket_id"])}
   end
 
   def render(assigns) do
@@ -26,6 +28,11 @@ defmodule PentoWeb.WrongLive do
   </.link>
   <% end %>
   </h2>
+  <br />
+  <pre>
+  {@current_user.username}
+  {@session_id}
+  </pre>
   """
   end
 
@@ -45,7 +52,7 @@ defmodule PentoWeb.WrongLive do
       guess_int == answer ->
         message =
         "Your guess: #{guess}. Correct! Try again."
-        answer = 1..9|>Enum.random()
+        answer = 1..10|>Enum.random()
         score = score + 10
         {
           :noreply,
