@@ -18,6 +18,8 @@ defmodule Pento.Catalog.Product do
     |> cast(attrs, [:name, :description, :unit_price, :sku, :image_upload])
     |> validate_required([:name, :description, :unit_price, :sku])
     |> unique_constraint(:sku)
+    |> validate_number(:sku, greater_than: 100_00)
+    |> validate_number(:sku, less_than: 1_000_000)
     |> validate_number(:unit_price, greater_than: 0.0)
   end
 

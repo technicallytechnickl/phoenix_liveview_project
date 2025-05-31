@@ -38,6 +38,22 @@ defmodule Pento.Accounts.UserNotifier do
   end
 
   @doc """
+  Deliver promotion to email
+  """
+  def deliver_promotion(email) do
+    deliver(email, "Congratulations!", """
+
+    ==============================
+
+    Hi #{email},
+
+    You win!
+
+    ==============================
+    """)
+  end
+
+  @doc """
   Deliver instructions to reset a user password.
   """
   def deliver_reset_password_instructions(user, url) do

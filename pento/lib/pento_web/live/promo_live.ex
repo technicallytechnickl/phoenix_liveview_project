@@ -39,4 +39,14 @@ defmodule PentoWeb.PromoLive do
 
     {:noreply, assign_form(socket, changeset)}
   end
+
+  def handle_event(
+        "save",
+        recipient,
+        socket
+      ) do
+    Promo.send_promo(recipient)
+
+    {:noreply, assign_form(socket, %{})}
+  end
 end
