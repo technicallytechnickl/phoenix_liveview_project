@@ -17,9 +17,9 @@ defmodule Pento.Survey.Demographic do
     |> validate_required([:gender, :year_of_birth, :user_id])
     |> validate_inclusion(
       :gender,
-      ["male", "female", "other", "prefer not to say"])
-      |> validate_inclusion(:year_of_birth, 1920..2023)
-      |> unique_constraint(:user_id)
-
+      ["male", "female", "other", "prefer not to say"]
+    )
+    |> validate_inclusion(:year_of_birth, 1920..2023)
+    |> unique_constraint(:user_id)
   end
 end
