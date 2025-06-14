@@ -3,13 +3,16 @@ defmodule Pento.Catalog.Product do
   import Ecto.Changeset
   alias Pento.Catalog.Product
 
+  alias Pento.Survey.Rating
+
   schema "products" do
-    field(:name, :string)
     field(:description, :string)
-    field(:unit_price, :float)
+    field(:name, :string)
     field(:sku, :integer)
+    field(:unit_price, :float)
     field(:image_upload, :string)
-    timestamps(type: :utc_datetime)
+    timestamps()
+    has_many(:ratings, Rating)
   end
 
   @doc false
