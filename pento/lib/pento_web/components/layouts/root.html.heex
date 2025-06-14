@@ -52,6 +52,17 @@
             Log out
           </.link>
         </li>
+        <li class="text-[0.8125rem] leading-6 text-zinc-900">
+        {@current_user.email}
+        </li>
+        <li>
+        <.link
+        href={~p"/admin/dashboard"}
+        class="text-[0.8125rem] leading-6 text-zinc-900
+        font-semibold hover:text-zinc-700">
+        Dashboard
+        </.link>
+        </li>
       <% else %>
         <li>
           <.link
